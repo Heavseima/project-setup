@@ -1,0 +1,12 @@
+# Production (Kubernetes). All values come from env vars / k8s Secrets. No Swagger, JSON logs.
+logging:
+  structured:
+    format:
+      console: ecs
+  level:
+    root: INFO
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}

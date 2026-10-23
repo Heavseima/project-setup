@@ -1,0 +1,38 @@
+# Local development against docker-compose. Values come from .env (copy .env.example).
+spring:
+  config:
+    import: optional:file:.env[.properties]   # loads .env from the project root (works in terminal and IntelliJ)
+  jpa:
+    show-sql: false
+    properties:
+      hibernate.format_sql: true
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}       # Mailpit (web UI: http://localhost:8025)
+
+logging:
+  level:
+    com.kshrd.hrdintelligence: DEBUG
+    org.hibernate.SQL: DEBUG
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    persist-authorization: true
+
+app:
+  security:
+    public-paths:
+      - /actuator/health/**
+      - /actuator/info
+      - /v3/api-docs/**
+      - /swagger-ui/**
+      - /swagger-ui.html
+    cors-allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}

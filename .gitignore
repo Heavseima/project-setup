@@ -1,0 +1,27 @@
+# Build
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+out/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*firebase*.json
+*service-account*.json
+
+# Claude Code personal files
+.claude/settings.local.json
+.claude/worktrees/
+CLAUDE.local.md
+
+# OS
+.DS_Store

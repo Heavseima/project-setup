@@ -1,0 +1,22 @@
+# Staging (Kubernetes). All values come from env vars / k8s Secrets.
+logging:
+  structured:
+    format:
+      console: ecs
+  level:
+    com.kshrd.hrdintelligence: INFO
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+app:
+  security:
+    public-paths:
+      - /actuator/health/**
+      - /actuator/info
+      - /v3/api-docs/**
+      - /swagger-ui/**
+      - /swagger-ui.html

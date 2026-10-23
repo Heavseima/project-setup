@@ -1,0 +1,31 @@
+# Used by automated tests. The database comes from Testcontainers (@ServiceConnection),
+# external APIs from WireMock, and JWTs are mocked with spring-security-test.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test   # replaced by Testcontainers @ServiceConnection
+    username: test
+    password: test
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost/test-issuer
+          jwk-set-uri: http://localhost/test-issuer/jwks
+  mail:
+    host: localhost
+
+app:
+  scheduling:
+    enabled: false
+  integration:
+    rda:
+      base-url: http://localhost:0
+      api-key: test
+    assessment:
+      base-url: http://localhost:0
+      api-key: test
+  storage:
+    minio:
+      endpoint: http://localhost:9000
+      access-key: test
+      secret-key: test
